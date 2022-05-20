@@ -1,7 +1,7 @@
 import random
 import list_of_words
 
-def accents(letter): # tentar usar isso depois pra ignorar acentuações na hora da comparação
+def accents(letter): # removes the accents when comparing the word to the user input
 
     if str(letter) in "áãàâ":
         return "a"
@@ -22,7 +22,7 @@ word = random.choice(list_of_words.list)
 word_no_accent = ""
 
 for letter in word:
-    word_no_accent = word_no_accent + accents(letter)
+    word_no_accent = word_no_accent + accents(letter) # variable used to keep the original word intact to be shown at the end of the game
 
 clean_color = "\033[0;0m"
 red = "\033[0;91m"
@@ -35,7 +35,7 @@ word_splitted = list(word_no_accent)
 
 #print(word_splitted)
 print(decoration)
-print(" "*25 + "QUINTOW")
+print(" "*25 + "QUINTOU")
 print("Tente adivinhar a palavra de 5 letras, você tem 6 chances: ")
 print(decoration)
 
@@ -45,7 +45,7 @@ guess = 0
 while guess <= number_of_guesses:
 
     user_guess = ""
-    while not str.isalpha(user_guess) or len(user_guess) != 5:
+    while not str.isalpha(user_guess) or len(user_guess) != 5: #checks if it's a letter or != 5
         user_guess = input(f"Tentativa " + str(guess + 1) + ": ")
 
     if user_guess == word:
@@ -60,7 +60,7 @@ while guess <= number_of_guesses:
     guess_formatted = ""
     letter_position = 0
 
-    for run_through_letters in range(len(word_splitted)): # it's always 5 letters
+    for run_through_letters in range(len(word_splitted)): # adds the colors to the letters of the input word
 
         if accents(user_guess_splitted[letter_position]) not in accents(word_splitted):
             guess_formatted = guess_formatted + f"{red}{(user_guess_splitted[letter_position])}{clean_color}"
