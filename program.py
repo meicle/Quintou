@@ -39,14 +39,14 @@ print(" "*25 + "QUINTOU")
 print("Tente adivinhar a palavra de 5 letras, você tem 6 chances: ")
 print(decoration)
 
-number_of_guesses = 5
-guess = 0
+number_of_guesses = 6
+guess = 1
 
 while guess <= number_of_guesses:
 
     user_guess = ""
     while not str.isalpha(user_guess) or len(user_guess) != 5: #checks if it's a letter or != 5
-        user_guess = input(f"Tentativa " + str(guess + 1) + ": ")
+        user_guess = input(f"Tentativa " + str(guess) + ": ")
 
     if user_guess == word_no_accent:
         print(f"Você venceu!\nA palavra é {word}.")
@@ -72,5 +72,5 @@ while guess <= number_of_guesses:
             guess_formatted = guess_formatted + f"{yellow}{(user_guess_splitted[letter_position])}{clean_color}"
             
         letter_position = letter_position + 1
-    guess = guess + 1
+    guess += 1
     print(guess_formatted)
