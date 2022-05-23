@@ -48,8 +48,8 @@ while guess <= number_of_guesses:
     while not str.isalpha(user_guess) or len(user_guess) != 5: #checks if it's a letter or != 5
         user_guess = input(f"Tentativa " + str(guess + 1) + ": ")
 
-    if user_guess == word:
-        print("Você venceu!")
+    if user_guess == word_no_accent:
+        print(f"Você venceu!\nA palavra é {word}.")
         break
 
     if guess == number_of_guesses:
