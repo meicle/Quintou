@@ -44,16 +44,19 @@ guess = 1
 
 while guess <= number_of_guesses:
 
-    user_guess = ""
-    while not str.isalpha(user_guess) or len(user_guess) != 5: #checks if it's a letter or != 5
-        user_guess = input(f"Tentativa " + str(guess) + ": ")
+    user_guess = input(f"Tentativa " + str(guess) + ": ")
+
+    if not str.isalpha(user_guess) or len(user_guess) != 5:
+        print("\033[A                             \033[A")
+        print(f"{red}Palavra inválida, tente novamente!{clean_color}")
+        continue
 
     if user_guess == word_no_accent:
-        print(f"Você venceu!\nA palavra é {word}.")
+        print(f"{green}Você venceu!\nA palavra é {word}.{clean_color}")
         break
 
     if guess == number_of_guesses:
-        print(f"Acabaram as chances! D:\nA palavra era {word}")
+        print(f"{red}Acabaram as chances! D:\nA palavra era {green}{word}{clean_color}")
         break
 
     user_guess_splitted = list(user_guess)
